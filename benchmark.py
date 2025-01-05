@@ -154,14 +154,14 @@ def main(num_rounds):
         if winner is None:
             print("\nTie!")
             draws += 1
-            result = 0
+            result = 1
         elif winner:
             if is_blackjack(player_hand):
                 print("\nPlayer wins with a Blackjack!")
             else:
                 print("\nPlayer wins!")
             wins += 1
-            result = 1
+            result = 3
         else:
             print("\nDealer wins!")
             losses += 1
@@ -178,4 +178,4 @@ def main(num_rounds):
     print(f"Wins percentage: {win_per:.2f}")
 
 if __name__ == "__main__":
-    main(num_rounds=1000)
+    main(num_rounds=10000)

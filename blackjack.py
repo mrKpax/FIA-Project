@@ -268,6 +268,9 @@ class Game:
                   f"Losses: {self.total_losses}, Draws: {self.total_draws}")
             print(f"Wins percentage: {win_percentage:.2f}\n")
 
+            draws_percentage = (self.total_draws / self.total_games * 100) if self.total_games > 0 else 0
+            print(f"Draws percentage: {draws_percentage:.2f}\n")
+
     def reset_game(self):
         self.deck = Deck()
         self.player_cards = []
@@ -392,11 +395,11 @@ class Game:
                 self.agent.decay_epsilon()
                 
                 if "Player wins" in self.current_winner:
-                    reward = 1
+                    reward = 3
                 elif "Dealer wins" in self.current_winner:
                     reward = -1
                 else:
-                    reward = 0
+                    reward = 1
                 next_state = None
             
             self.agent.replay_buffer.add((state, action, reward, next_state))
@@ -475,6 +478,7 @@ class Game:
                 
             # Draw stats
             font = pygame.font.Font(None, 45)
+            dfont = pygame.font.Font(None, 35)
             stats_games = font.render(f"Games: {self.game_count}", True, WHITE)
             stats_games_rect = stats_games.get_rect(center=(WINDOW_WIDTH // 4, 100))
             screen.blit(stats_games, stats_games_rect)
@@ -482,6 +486,11 @@ class Game:
             stats_wins = font.render(f"Wins: {self.total_wins}", True, WHITE)
             stats_wins_rect = stats_wins.get_rect(center=(WINDOW_WIDTH // 4, 130))
             screen.blit(stats_wins, stats_wins_rect)
+            
+            draws_percentage = (self.total_draws / self.total_games * 100) if self.total_games > 0 else 0
+            stats_draws = dfont.render(f"Draws: {draws_percentage:.1f}%", True, WHITE)
+            stats_draws_rect = stats_draws.get_rect(center=(WINDOW_WIDTH // 4, 240))
+            screen.blit(stats_draws, stats_draws_rect)
 
             if self.agent_playing:
                 font = pygame.font.Font(None, 36)

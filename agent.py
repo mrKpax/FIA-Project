@@ -5,8 +5,8 @@ import pandas as pd
 
 class ReplayBuffer:
     """Creates a circular buffer to store game experiences"""
-    def __init__(self, capacity=100000):
-        """Initialize replay buffer with max number of experiences to store (default 100000)"""
+    def __init__(self, capacity=10000):
+        """Initialize replay buffer with max number of experiences to store (default 10000)"""
         self.buffer = deque(maxlen=capacity)
     
     def add(self, experience):
