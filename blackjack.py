@@ -266,7 +266,7 @@ class Game:
             win_percentage = (self.total_wins / self.total_games * 100) if self.total_games > 0 else 0
             print(f"Games: {self.total_games}, Wins: {self.total_wins}, "
                   f"Losses: {self.total_losses}, Draws: {self.total_draws}")
-            print(f"Wins percentage: {win_percentage:.2f}\n")
+            print(f"Wins percentage: {win_percentage:.2f}")
 
             draws_percentage = (self.total_draws / self.total_games * 100) if self.total_games > 0 else 0
             print(f"Draws percentage: {draws_percentage:.2f}\n")
@@ -478,7 +478,7 @@ class Game:
                 
             # Draw stats
             font = pygame.font.Font(None, 45)
-            dfont = pygame.font.Font(None, 35)
+            dfont = pygame.font.Font(None, 45)
             stats_games = font.render(f"Games: {self.game_count}", True, WHITE)
             stats_games_rect = stats_games.get_rect(center=(WINDOW_WIDTH // 4, 100))
             screen.blit(stats_games, stats_games_rect)
