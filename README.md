@@ -42,7 +42,7 @@ ALAN è un agente basato su Q-Learning che si distingue per la capacità di appr
      
    - Per avviare il gioco controllato dall'AI:
      ```bash
-     python3 main.py --mode ai
+     python3 blackjack.py
      ```
      Poi selezionare la modalità di gioco controllata dall'AI cliccando il pulsante "AI Play" tramite la GUI.
 
